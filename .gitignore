@@ -1,1 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
+.idea/
+.travis.yml
+node_modules/
+.editorconfig
+/public/css/
+/public/img/
+/public/js/
