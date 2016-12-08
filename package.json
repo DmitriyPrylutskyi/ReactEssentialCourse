@@ -1,5 +1,5 @@
 {
-  "name": "redux-minimal",
+  "name": "react-redux-express-webpack",
   "version": "1.0.0",
   "description": "Start building complex react-redux apps today, with this minimalist easy to understand starter kit (boilerplate)",
   "keywords": [
@@ -30,7 +30,7 @@
       "stage-3"
     ]
   },
-  "author": "Catalin Luntraru",
+  "author": "Dmitriy Prylutskyi",
   "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
