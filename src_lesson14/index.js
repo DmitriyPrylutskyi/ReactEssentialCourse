@@ -37,24 +37,26 @@ const Calc = React.createClass({
 
   render: function() {
     return (
-      <div className="input">
-        <input type="text" placeholder="Enter number..." className="enter-field" ref="a"/>
-        <input type="text" placeholder="Enter number..." className="enter-field" ref="b"/>
+      <div className="calc">
         <div>
-          <button onClick={this.handleTotal}>
+          <input type="text" placeholder="Enter number..." className="form-control" ref="a"/>
+          <input type="text" placeholder="Enter number..." className="form-control" ref="b"/>
+        </div>
+        <div>
+          <button className="btn btn-primary" onClick={this.handleTotal}>
             +
           </button>
-          <button onClick={this.handleTotal}>
+          <button className="btn btn-primary" onClick={this.handleTotal}>
             -
           </button>
-          <button onClick={this.handleTotal}>
+          <button className="btn btn-primary" onClick={this.handleTotal}>
             *
           </button>
-          <button onClick={this.handleTotal}>
+          <button className="btn btn-primary" onClick={this.handleTotal}>
             /
           </button>
         </div>
-        <p>Итог: {this.state.total}</p>
+        <h3><span className="label label-info">Итог: {this.state.total}</span></h3>
       </div>
       )
   }

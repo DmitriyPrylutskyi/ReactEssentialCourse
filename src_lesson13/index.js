@@ -54,9 +54,9 @@ const Contact = React.createClass({
         <img className="contact-image" src={this.props.image} width="60px" height="60px" />
         <div className="contact-info">
           <div className="contact-name"> {this.props.name} </div>
-          <div className="contact-number"> {this.props.phoneNumber} </div>
-          <div className={this.state.expand ? '' : ' expand'}> {this.props.address} </div>
-          <div className={this.state.expand ? '' : ' expand'}> {this.props.email} </div>
+          <div className="contact-number">Phone: {this.props.phoneNumber} </div>
+          <div className={'contact-address' + (this.state.expand ? '' : ' expand')}> Address: {this.props.address} </div>
+          <div className={'contact-email' + (this.state.expand ? '' : ' expand')}>E-mail: {this.props.email} </div>
         </div>
       </li>
       )
