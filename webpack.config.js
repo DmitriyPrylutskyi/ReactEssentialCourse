@@ -1,6 +1,6 @@
 // http://webpack.github.io/docs/configuration.html
 // http://webpack.github.io/docs/webpack-dev-server.html
-var app_root = 'src_lesson23'; // the app root folder: src, src_users, etc
+var app_root = 'src_lesson24'; // the app root folder: src, src_users, etc
 var path = require('path');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -16,6 +16,7 @@ module.exports = {
     publicPath: 'js/',
     filename: 'bundle.js',
   },
+  context: path.join(__dirname, app_root),
   module: {
     loaders: [
       {
@@ -32,11 +33,15 @@ module.exports = {
         test: /\.css$/,
         loaders: ['style', 'css'],
       },
+      {
+        test: /\.jsx$/,
+        loader: "react-hot!babel",
+        exclude: [/node_modules/, /public/]
+      },
      ],
   },
-  context: path.join(__dirname, app_root),
-  plugins: [
-    new CleanWebpackPlugin(['css/main.css', 'js/bundle.js', 'img/*'], {
+   /* plugins: [
+    new CleanWebpackPlugin(['css/main.css', 'js/bundle.js', 'img/!*'], {
       root: __dirname + '/public',
       verbose: true,
       dry: false, // true for simulation
@@ -44,5 +49,5 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: 'img', to: '../img'
     }], {debug: 'info'}),
-  ],
+  ],*/
 };

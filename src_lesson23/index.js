@@ -47,7 +47,7 @@ const NoteEditor = React.createClass({
   },
 
   handleTextChange: function(event) {
-    this.setState({ text: event.target.value });
+     this.setState({ text: event.target.value });
   },
 
   handleColorChange: function(color) {
