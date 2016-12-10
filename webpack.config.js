@@ -8,6 +8,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   app_root: app_root, // the app root folder, needed by the other webpack configs
   entry: [
+/*    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',*/
     'babel-polyfill',
     __dirname + '/' + app_root + '/index.js',
   ],
@@ -40,8 +42,8 @@ module.exports = {
       },
      ],
   },
-   /* plugins: [
-    new CleanWebpackPlugin(['css/main.css', 'js/bundle.js', 'img/!*'], {
+    plugins: [
+    new CleanWebpackPlugin(['css/main.css', 'js/bundle.js', 'img/*'], {
       root: __dirname + '/public',
       verbose: true,
       dry: false, // true for simulation
@@ -49,5 +51,5 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: 'img', to: '../img'
     }], {debug: 'info'}),
-  ],*/
+  ],
 };
