@@ -166,8 +166,7 @@ const NotesApp = React.createClass({
   getInitialState: function() {
     return {
       notes: [],
-      filter: [],
-      empty: false,
+      filter: '',
     };
   },
 
@@ -202,12 +201,18 @@ const NotesApp = React.createClass({
 
   handleSearch: function() {
     const searchQuery = this.refs.search.value.toLowerCase();
-    let searchNotes = this.state.notes.filter(function (el) {
-      const searchValue = el.text.toLowerCase();
-      return searchValue.indexOf(searchQuery) !== -1;
-    });
-    (searchQuery != '' && searchNotes == '') ? this.setState({empty: true}) : this.setState({empty: false});
-    searchQuery == '' ? this.setState({filter: []}): this.setState({filter: searchNotes});
+    this.setState({filter: searchQuery})
+  },
+
+  filterNotes: function (notes, filter) {
+    if (filter != '') {
+      const searchNotes = this.state.notes.filter(function (note) {
+        const searchNote = note.text.toLowerCase();
+        return searchNote.indexOf(filter) !== -1;
+      });
+      return searchNotes;
+    }
+    return notes;
   },
 
   render: function() {
@@ -216,7 +221,7 @@ const NotesApp = React.createClass({
         <h2 className="app-header">NotesApp</h2>
           <input type="text" placeholder="Search..." ref="search" className="search-field" onChange={this.handleSearch} />
         <NoteEditor onNoteAdd={this.handleNoteAdd} />
-        <NotesGrid notes={(this.state.filter == '' && !this.state.empty) ? this.state.notes : this.state.filter} onNoteDelete={this.handleNoteDelete} />
+        <NotesGrid notes={this.filterNotes(this.state.notes, this.state.filter)} onNoteDelete={this.handleNoteDelete} />
       </div>
     );
   },
