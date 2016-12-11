@@ -1,4 +1,6 @@
 import React from "react";
+import articles from '../articles.json';
+
 require('./ArticlesApp.scss');
 
 const Article = require('./Article.jsx');
@@ -7,19 +9,9 @@ class ArticlesApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: []
+      articles: articles
     };
-
-    fetch('../articles.json')
-      .then((res) => {
-          return res.json()
-            .then((articles) => {
-              this.articles = articles;
-              this.state = {
-                articles: articles
-              }
-            })
-      });
+    this.articles = articles;
   }
 
   handleSearch (event) {
