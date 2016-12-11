@@ -40,18 +40,18 @@ class ContactsApp extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      displayedContacts: CONTACTS
+      contacts: CONTACTS
     };
   }
 
   handleSearch (event) {
     const searchQuery = event.target.value.toLowerCase();
-    const displayedContacts = CONTACTS.filter(function(el) {
+    const contacts = CONTACTS.filter((el) =>{
         const searchValue = el.name.toLowerCase();
         return searchValue.indexOf(searchQuery) !== -1;
       });
       this.setState({
-      displayedContacts: displayedContacts
+      contacts: contacts
     });
   }
 
@@ -61,7 +61,7 @@ class ContactsApp extends React.Component {
       <input type="text" placeholder="Search..." className="search-field" onChange={this.handleSearch.bind(this)} />
       <ul className="contacts-list">
           {
-            this.state.displayedContacts.map(function(el) {
+            this.state.contacts.map(function(el) {
               return <Contact
                 key={el.id}
                 name={el.name}

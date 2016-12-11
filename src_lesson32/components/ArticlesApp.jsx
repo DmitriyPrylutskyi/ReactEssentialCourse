@@ -1,0 +1,58 @@
+import React from "react";
+require('./ArticlesApp.scss');
+
+const Article = require('./Article.jsx');
+
+class ArticlesApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      articles: []
+    };
+
+    fetch('../articles.json')
+      .then((res) => {
+          return res.json()
+            .then((articles) => {
+              this.articles = articles;
+              this.state = {
+                articles: articles
+              }
+            })
+      });
+  }
+
+  handleSearch (event) {
+    const searchQuery = event.target.value.toLowerCase();
+    const articles = this.articles.filter((article) => {
+      const searchValue = article.body.toLowerCase();
+      return searchValue.indexOf(searchQuery) !== -1;
+    });
+    this.setState({
+      articles: articles
+    });
+  }
+
+  render() {
+    return (
+      <div className="articles">
+        <input type="text" placeholder="Search..." className="search-field" onChange={this.handleSearch.bind(this)} />
+        <ul className="articles-list">
+          {
+             this.state.articles.map((el)=> {
+              return <Article
+                key={el.id}
+                title={el.title}
+                author={el.author}
+                body={el.body}
+              />;
+            })
+          }
+        </ul>
+      </div>
+    );
+  }
+}
+
+module.exports = ArticlesApp;
+
