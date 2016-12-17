@@ -21,7 +21,7 @@ class Article extends React.Component {
 
   render () {
     return (
-      <li className="article" onClick={this.expandArticle.bind(this)}>
+      <li className="article" onClick={()=>this.expandArticle()}>
         <div className="article-info">
           <div className="article-title"> {this.props.title} </div>
           <div className="article-author">{this.props.author} </div>

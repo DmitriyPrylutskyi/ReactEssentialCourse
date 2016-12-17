@@ -1,0 +1,17 @@
+.article-preview {
+  border-bottom: 1px solid #b3b3b3;
+  padding: 5px;
+}
+
+.article-preview:hover {
+  background-color: lighten(#00BCD4, 55%);
+}
+
+.selected:hover {
+    background-color: #fff;
+}
+
+.selected > .title, .selected > .author {
+    font-weight: bold;
+}
+

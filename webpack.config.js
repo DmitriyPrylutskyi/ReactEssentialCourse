@@ -1,6 +1,6 @@
 // http://webpack.github.io/docs/configuration.html
 // http://webpack.github.io/docs/webpack-dev-server.html
-var app_root = 'src_lesson32'; // the app root folder: src, src_users, etc
+var app_root = 'src_lesson33'; // the app root folder: src, src_users, etc
 var path = require('path');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -23,7 +23,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'react-hot!babel',
         exclude: /node_modules/,
       },
       {
@@ -37,7 +37,7 @@ module.exports = {
       },
       {
         test: /\.jsx$/,
-        loader: "react-hot!babel",
+        loader: 'react-hot!babel',
         exclude: [/node_modules/, /public/]
       },
       {

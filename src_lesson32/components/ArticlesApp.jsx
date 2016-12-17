@@ -1,6 +1,6 @@
 import React from "react";
-import articles from '../articles.json';
 
+const ARTICLES = require("../articles.json");
 require('./ArticlesApp.scss');
 
 const Article = require('./Article.jsx');
@@ -9,14 +9,14 @@ class ArticlesApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: articles
+      articles: ARTICLES
     };
-    this.articles = articles;
+    this.articles = ARTICLES;
   }
 
   handleSearch (event) {
     const searchQuery = event.target.value.toLowerCase();
-    const articles = this.articles.filter((article) => {
+    const articles = ARTICLES.filter((article) => {
       const searchValue = article.body.toLowerCase();
       return searchValue.indexOf(searchQuery) !== -1;
     });
@@ -28,7 +28,7 @@ class ArticlesApp extends React.Component {
   render() {
     return (
       <div className="articles">
-        <input type="text" placeholder="Search..." className="search-field" onChange={this.handleSearch.bind(this)} />
+        <input type="text" placeholder="Search..." className="search-field" onChange={(e) => this.handleSearch(e)} />
         <ul className="articles-list">
           {
              this.state.articles.map((el)=> {

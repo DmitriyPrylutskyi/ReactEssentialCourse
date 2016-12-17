@@ -35,7 +35,7 @@ class AddTodo extends React.Component {
          value={this.state.text}
          onChange = {this.handleTextChange.bind(this)}
         />
-        <button type="button" className="btn btn-default" onClick={this.handleTodoAdd.bind(this)}>Add</button>
+        <button type="button" className="btn btn-default btn-add" onClick={this.handleTodoAdd.bind(this)}>Add</button>
       </div>
     );
   }
@@ -45,10 +45,8 @@ class Todo extends React.Component {
   render () {
     return (
       <div className="todo-item" >
-        <div onClick={this.props.onComplete}>
-          <p className={this.props.complete ? ' complete': ' uncomplete'}>
+        <div onClick={this.props.onComplete} className={this.props.complete ? ' complete': ' uncomplete'}>
             {this.props.children}
-          </p>
         </div>
         <span className="delete-todo" onClick={this.props.onDelete}> × </span>
       </div>

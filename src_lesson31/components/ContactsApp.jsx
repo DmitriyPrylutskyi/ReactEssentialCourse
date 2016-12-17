@@ -58,7 +58,7 @@ class ContactsApp extends React.Component {
   render() {
     return (
       <div className="contacts">
-      <input type="text" placeholder="Search..." className="search-field" onChange={this.handleSearch.bind(this)} />
+      <input type="text" placeholder="Search..." className="search-field" onChange={(e)=>this.handleSearch(e)} />
       <ul className="contacts-list">
           {
             this.state.contacts.map(function(el) {

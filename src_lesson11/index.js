@@ -6,9 +6,9 @@ const Article = React.createClass({
   render: function() {
     return (
       <div className="article">
-        <h3>{this.props.title}</h3>
-        <h4>{this.props.author}</h4>
-        <p>{this.props.body}</p>
+        <div className="article-title"> {this.props.title} </div>
+        <div className="article-author">{this.props.author} </div>
+        <div className="article-body">{this.props.body} </div>
       </div>
       )
   }
