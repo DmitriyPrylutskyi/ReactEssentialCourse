@@ -3,10 +3,11 @@
  */
 var ReactDOM = require('react-dom');
 var React = require('react');
-var ComeApp = require('./components/IOCalc.jsx');
+
+var IOCalcApp = require('./components/IOCalc.jsx');
 
 ReactDOM.render(
-  <ComeApp />,
+  <IOCalcApp />,
   document.getElementById('app')
 );
 

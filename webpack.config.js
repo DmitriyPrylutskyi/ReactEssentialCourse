@@ -47,13 +47,14 @@ module.exports = {
      ],
   },
     plugins: [
-    new CleanWebpackPlugin(['css/main.css', 'js/bundle.js', 'img/*'], {
+    new CleanWebpackPlugin(['css/main.css', 'js/bundle.js', 'img/*', 'index.html'], {
       root: __dirname + '/public',
       verbose: true,
       dry: false, // true for simulation
     }),
-    new CopyWebpackPlugin([{
-      from: 'img', to: '../img'
-    }], {debug: 'info'}),
+    new CopyWebpackPlugin([
+      {from: 'index.html', to: '../index.html'},
+      {from: 'img', to: '../img'}
+    ], {debug: 'info'}),
   ],
 };
