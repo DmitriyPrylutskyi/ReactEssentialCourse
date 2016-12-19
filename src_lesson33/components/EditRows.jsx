@@ -1,7 +1,7 @@
 /**
  * Created by Dmitriy Prilutsky on 16.12.2016.
  */
-import React from "react";
+import React from 'react';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -49,51 +49,51 @@ class EditRows extends React.Component {
 
   handleOpen () {
     this.setState({open: true});
-  };
+  }
 
   handleClose () {
     this.setState({open: false});
-  };
+  }
 
   render() {
     const actions = [
       <FlatButton
-        label="Cancel"
+        label='Cancel'
         primary={true}
         onTouchTap={() => this.handleClose()}
       />,
       <FlatButton
-        label="Submit"
+        label='Submit'
         primary={true}
         onTouchTap={() => this.handleFormSubmit()}
       />,
     ];
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-        <div className="editrows">
-          <RaisedButton label="Add new row" style={{margin: '20px', width: '180px'}} className="add-button" onTouchTap={() => this.handleOpen()} />
-          <RaisedButton label="Delete selected" secondary={true} style={{margin: '20px', width: '180px'}} className="del-button" onClick={() => this.handleRowDel()} />
+        <div className='editrows'>
+          <RaisedButton label='Add new row' style={{margin: '20px', width: '180px'}} className='add-button' onTouchTap={() => this.handleOpen()} />
+          <RaisedButton label='Delete selected' secondary={true} style={{margin: '20px', width: '180px'}} className='del-button' onClick={() => this.handleRowDel()} />
           <Dialog
-            title="Add income / outcome"
+            title='Add income / outcome'
             actions={actions}
             modal={true}
             open={this.state.open}
           >
             <TextField
-              type="text"
-              hintText="Name"
-              className="name-field"
-              ref="name"
+              type='text'
+              hintText='Name'
+              className='name-field'
+              ref='name'
               required
               onChange={() => this.handleTextChange()}
               style={{marginRight: '20px'}}
             />
             <TextField
-              type="number"
-              step="0.01"
-              hintText="00.00"
-              className="sum-field"
-              ref="sum"
+              type='number'
+              step='0.01'
+              hintText='00.00'
+              className='sum-field'
+              ref='sum'
               required
               onChange={() => this.handleTextChange()}
               style={{marginRight: '20px'}}

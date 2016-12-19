@@ -10,7 +10,7 @@ import AppBar from 'material-ui/AppBar';
 const MyAppBar = () => (
   <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
     <AppBar
-      title="Income calculator"
+      title='Income calculator'
     />
   </MuiThemeProvider>
 )

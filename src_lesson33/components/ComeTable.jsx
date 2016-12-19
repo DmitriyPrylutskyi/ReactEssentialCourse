@@ -1,14 +1,14 @@
 /**
  * Created by Dmitriy Prilutsky on 18.12.2016.
  */
-import React from "react";
+import React from 'react';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {Table, TableHeader, TableHeaderColumn, TableBody, TableRow, TableRowColumn, TableFooter} from 'material-ui/Table';
 import Checkbox from 'material-ui/Checkbox';
 
-import EditRows from "./EditRows.jsx"
+import EditRows from './EditRows.jsx'
 require('./ComeTable.scss');
 
 class ComeTable extends React.Component {
@@ -26,17 +26,17 @@ class ComeTable extends React.Component {
 
   countTotal () {
     let total = 0;
-    this.props.state.forEach((item, i) => {
+    this.props.state.forEach((item) => {
       total+= +item.sum
     })
     return total
   }
 
   formatDate (date) {
-    const formatter = new Intl.DateTimeFormat("ru", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric"
+    const formatter = new Intl.DateTimeFormat('ru', {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric'
     });
     return formatter.format(new Date(date))
   }

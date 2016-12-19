@@ -1,11 +1,11 @@
 /**
  * Created by Dmitriy Prilutsky on 16.12.2016.
  */
-import React from "react"
+import React from 'react'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
-import MyAppBar from "./MyAppBar.jsx"
-import ComeTable from "./ComeTable.jsx"
+import MyAppBar from './MyAppBar.jsx'
+import ComeTable from './ComeTable.jsx'
 
 require('./IOCalc.scss')
 
@@ -63,7 +63,7 @@ class IOCalcApp extends React.Component {
   handleRowDel (state, statecheked, name) {
     console.log(state, statecheked, name)
     let newRows = state
-    statecheked.forEach((item, i) => {
+    statecheked.forEach((item) => {
       newRows = newRows.filter ((row) => {
         return row.id !== item;
       })
@@ -80,7 +80,7 @@ class IOCalcApp extends React.Component {
 
   render() {
     return (
-      <div className="app">
+      <div className='app'>
         <MyAppBar/>
         <ComeTable
           title='Income table'

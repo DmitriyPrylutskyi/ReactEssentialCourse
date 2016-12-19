@@ -1,30 +1,51 @@
 // http://webpack.github.io/docs/configuration.html
 // http://webpack.github.io/docs/webpack-dev-server.html
-var app_root = 'src_lesson33'; // the app root folder: src, src_users, etc
+var app_root = 'src_lesson51'; // the app root folder: src, src_users, etc
 var path = require('path');
+var webpack = require('webpack')
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   app_root: app_root, // the app root folder, needed by the other webpack configs
+  context: path.join(__dirname, app_root),
+  devtool: 'cheap-module-eval-source-map',
   entry: [
-/*    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',*/
+    'webpack-hot-middleware/client',
     'babel-polyfill',
-    __dirname + '/' + app_root + '/index.js',
+    __dirname + '/' + app_root + '/index',
   ],
   output: {
-    path: __dirname + '/public/js',
-    publicPath: 'js/',
+    path: path.join(__dirname, app_root, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/static/'
   },
-  context: path.join(__dirname, app_root),
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
   module: {
+    preLoaders: [ //добавили ESlint в preloaders
+      {
+        test: [/\.jsx$/, /\.js$/],
+        loaders: ['eslint'],
+        include: [
+          path.resolve(__dirname, app_root),
+        ],
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,
-        loader: 'react-hot!babel',
+        loaders: ['react-hot', 'babel-loader'],
         exclude: /node_modules/,
+        plugins: ['transform-runtime'],
+      },
+      {
+        test: /\.jsx$/,
+        loaders: ['react-hot', 'babel-loader'],
+        exclude: /node_modules/,
+        plugins: ['transform-runtime'],
       },
       {
         // https://github.com/jtangelder/sass-loader
@@ -36,25 +57,29 @@ module.exports = {
         loaders: ['style', 'css'],
       },
       {
-        test: /\.jsx$/,
-        loader: 'react-hot!babel',
-        exclude: [/node_modules/, /public/]
+        test: /\.less$/,
+        loaders: ['style', 'css', 'less'],
+      },
+      {
+        test: /\.gif$/,
+        loader: "url-loader?limit=10000&mimetype=image/gif"
+      },
+      {
+        test: /\.jpg$/,
+        loader: "url-loader?limit=10000&mimetype=image/jpg"
+      },
+      {
+        test: /\.png$/,
+        loader: "url-loader?limit=10000&mimetype=image/png"
+      },
+      {
+        test: /\.svg/,
+        loader: "url-loader?limit=26000&mimetype=image/svg+xml"
       },
       {
         test: /\.json$/,
         loader: "json-loader",
-      }
-     ],
-  },
-    plugins: [
-    new CleanWebpackPlugin(['css/main.css', 'js/bundle.js', 'img/*', 'index.html'], {
-      root: __dirname + '/public',
-      verbose: true,
-      dry: false, // true for simulation
-    }),
-    new CopyWebpackPlugin([
-      {from: 'index.html', to: '../index.html'},
-      {from: 'img', to: '../img'}
-    ], {debug: 'info'}),
-  ],
+      },
+    ],
+  }
 };
