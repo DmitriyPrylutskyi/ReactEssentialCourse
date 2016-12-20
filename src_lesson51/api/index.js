@@ -1,6 +1,7 @@
 const CLIENT_ID = '1094779988969-5jocsmlophl3oq5rbdfd0ilbhu3mqmqo.apps.googleusercontent.com';
 const SCOPES = ['https://www.googleapis.com/auth/tasks', 'https://www.googleapis.com/auth/plus.me'];
 
+/*eslint-disable */
 export default {
     authorize(params) {
         return new Promise((resolve, reject) => {
@@ -74,3 +75,4 @@ export default {
         });
     }
 }
+/*eslint-disable */

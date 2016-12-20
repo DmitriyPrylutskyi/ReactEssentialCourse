@@ -3,6 +3,9 @@ import React from 'react';
 import TasksActions from '../actions/TasksActions';
 import TasksStore from '../stores/TasksStore';
 
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import IconButton from 'material-ui/IconButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
@@ -77,6 +80,7 @@ const TasksPage = React.createClass({
 
     render() {
         return (
+          <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
             <div className='TasksPage'>
                 <div className='TasksPage__header'>
                     <h2 className='TasksPage__title'>List name</h2>
@@ -106,6 +110,7 @@ const TasksPage = React.createClass({
                     onClose={this.handleClose}
                 />
             </div>
+          </MuiThemeProvider>
         );
     },
 

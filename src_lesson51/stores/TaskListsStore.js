@@ -6,7 +6,7 @@ import AppConstants from '../constants/AppConstants';
 const CHANGE_EVENT = 'change';
 
 let _taskLists = [];
-let _error = null;
+let _error = null; // eslint-disable-line
 
 function formatTaskList(data) {
     return {

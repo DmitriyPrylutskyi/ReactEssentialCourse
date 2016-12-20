@@ -1,5 +1,8 @@
 import React from 'react';
 
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
@@ -67,6 +70,7 @@ const Task = React.createClass({
         return (
             this.state.isEditing
             ?
+              <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
                 <div className='Task editing'>
                     <input
                         className='Task__input'
@@ -82,7 +86,9 @@ const Task = React.createClass({
                         </div>
                     </div>
                 </div>
+              </MuiThemeProvider>
             :
+              <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
                 <div className='Task'>
                     <Checkbox
                         className='Task__checkbox'
@@ -99,6 +105,7 @@ const Task = React.createClass({
                         <MenuItem>Delete</MenuItem>
                     </IconMenu>
                 </div>
+              </MuiThemeProvider>
         );
     }
 });

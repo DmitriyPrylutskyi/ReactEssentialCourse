@@ -1,5 +1,8 @@
 import React from 'react';
 
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
@@ -44,6 +47,7 @@ const TaskListCreateModal = React.createClass({
         const { isOpen } = this.props;
 
         return (
+          <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
             <Dialog
                 className='TaskListCreateModal'
                 contentStyle={{ maxWidth: 400 }}
@@ -72,6 +76,7 @@ const TaskListCreateModal = React.createClass({
                     floatingLabelText='Enter task list name'
                 />
             </Dialog>
+          </MuiThemeProvider>
         );
     }
 });

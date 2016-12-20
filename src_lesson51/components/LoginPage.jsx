@@ -1,9 +1,11 @@
 import React from 'react';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import SessionStore from '../stores/SessionStore';
 import SessionActions from '../actions/SessionActions';
-
-import RaisedButton from 'material-ui/RaisedButton';
 
 require ('./LoginPage.less');
 
@@ -56,10 +58,11 @@ const LoginPage = React.createClass({
 
     render() {
         return (
+          <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
             <div className='LoginPage'>
                 <div className='LoginPage__banner'>
                     <div className='LoginPage__text'>
-                        <h1>Almost Google tasks</h1>
+                        <h1>Google Tasks</h1>
                         <p>Organise your life!</p>
                         <RaisedButton
                             className='login-button'
@@ -67,12 +70,9 @@ const LoginPage = React.createClass({
                             onClick={this.handleLogIn}
                         />
                     </div>
-                    <img
-                        src='/img/desk.png'
-                        className='LoginPage__image'
-                    />
                 </div>
             </div>
+          </MuiThemeProvider>
         );
     },
 
