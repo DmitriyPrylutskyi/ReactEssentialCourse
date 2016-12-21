@@ -49,6 +49,7 @@ const TasksActions = {
             title: params.text
         })
         .then(data => {
+            console.info(params.text);
             AppDispatcher.dispatch({
                 type   : AppConstants.TASK_UPDATE_SUCCESS,
                 task   : data,
@@ -81,6 +82,28 @@ const TasksActions = {
             });
         });
     },
+
+    deleteTask(params) {
+        api.deleteTask({
+          taskListId: params.taskListId,
+          taskId: params.taskId
+        })
+          .then(data => {
+            console.info(params.taskId);
+            AppDispatcher.dispatch({
+              type   : AppConstants.TASK_DELETE_SUCCESS,
+              task   : data,
+              taskId : params.taskId
+            });
+          })
+          .catch(err => {
+            console.info(params.taskId);
+            AppDispatcher.dispatch({
+              type  : AppConstants.TASK_DELETE_FAIL,
+              error : err
+            });
+          });
+    }
 };
 
 export default TasksActions;

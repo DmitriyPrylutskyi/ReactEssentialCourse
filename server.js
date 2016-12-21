@@ -14,8 +14,6 @@ var compiler = webpack(config)
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath  }))
 app.use(webpackHotMiddleware(compiler))
 
-console.log(index_path)
-
 app.get('*', function (request, response) {
   response.sendFile(index_path, function (error) {
     if (error) {

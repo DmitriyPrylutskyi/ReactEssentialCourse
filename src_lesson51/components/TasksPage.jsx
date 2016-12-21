@@ -55,6 +55,7 @@ const TasksPage = React.createClass({
     },
 
     handleTaskUpdate(taskId, { text }) {
+        console.info(text, taskId);
         TasksActions.updateTask({
             taskListId: this.props.params.id,
             taskId: taskId,
@@ -76,6 +77,14 @@ const TasksPage = React.createClass({
         TasksActions.createTask({ taskListId, ...task });
 
         this.setState({ isCreatingTask : false });
+    },
+
+    handleTaskDelete(taskId) {
+      console.info(taskId, this.props.params.id);
+      TasksActions.deleteTask({
+        taskListId: this.props.params.id,
+        taskId: taskId
+      });
     },
 
     render() {
@@ -100,6 +109,7 @@ const TasksPage = React.createClass({
                                 isCompleted={task.isCompleted}
                                 onStatusChange={this.handleStatusChange.bind(null, task.id)}
                                 onUpdate={this.handleTaskUpdate.bind(null, task.id)}
+                                onDelete={this.handleTaskDelete.bind(null, task.id)}
                             />
                         )
                     }

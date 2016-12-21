@@ -1,10 +1,6 @@
-// http://webpack.github.io/docs/configuration.html
-// http://webpack.github.io/docs/webpack-dev-server.html
 var app_root = 'src_lesson51'; // the app root folder: src, src_users, etc
 var path = require('path');
 var webpack = require('webpack')
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   app_root: app_root, // the app root folder, needed by the other webpack configs

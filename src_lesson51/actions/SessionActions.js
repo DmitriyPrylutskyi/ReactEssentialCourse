@@ -21,6 +21,24 @@ const SessionActions = {
 
             if (callback) callback();
         });
+    },
+    logout(callback) {
+        api.logout()
+        .then(() => {
+            AppDispatcher.dispatch({
+              type: AppConstants.LOGOUT_SUCCESS
+            });
+
+            if (callback) callback();
+        })
+        .catch((err) => {
+            AppDispatcher.dispatch({
+              type: AppConstants.LOGOUT_FAIL,
+              error: err
+            });
+
+            if (callback) callback();
+        });
     }
 };
 

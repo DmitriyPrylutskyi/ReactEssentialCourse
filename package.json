@@ -19,6 +19,7 @@
   },
   "scripts": {
     "start": "node server.js",
+    "prod": "webpack --config webpack.prod.config.js",
     "test": "mocha --recursive --compilers js:babel-register --require babel-polyfill --require ignore-styles",
     "test-watch": "npm test -- --watch"
   },

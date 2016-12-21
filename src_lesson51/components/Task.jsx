@@ -28,6 +28,11 @@ const Task = React.createClass({
         this.setState({ isEditing: true }, this.focusInput);
     },
 
+    handleDelete() {
+      console.info('delete');
+      this.props.onDelete();
+    },
+
     handleCancel() {
         this.cancelTask();
     },
@@ -57,8 +62,8 @@ const Task = React.createClass({
     },
 
     saveTask() {
+        console.info(this.input.value);
         this.props.onUpdate({ text: this.input.value });
-
         this.setState({ isEditing: false });
     },
 
@@ -81,7 +86,8 @@ const Task = React.createClass({
                     />
                     <div className='Task__toolbar'>
                         <div>
-                            <RaisedButton primary onClick={this.handleSave} label='Save' />
+                            <RaisedButton primary onClick={this.handleSave} label='Save' style={{marginRight: '20px'}} />
+                            <RaisedButton secondary onClick={this.handleDelete} label='Delete' style={{marginRight: '20px'}}/>
                             <FlatButton onClick={this.handleCancel} label='Cancel' />
                         </div>
                     </div>
@@ -102,7 +108,7 @@ const Task = React.createClass({
 
                     <IconMenu iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}>
                         <MenuItem onClick={this.handleEdit}>Edit</MenuItem>
-                        <MenuItem>Delete</MenuItem>
+                        <MenuItem onClick={this.handleDelete}>Delete</MenuItem>
                     </IconMenu>
                 </div>
               </MuiThemeProvider>

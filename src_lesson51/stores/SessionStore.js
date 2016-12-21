@@ -43,6 +43,20 @@ AppDispatcher.register(action => {
             break;
         }
 
+        case AppConstants.LOGOUT_SUCCESS: {
+          _isLoggedIn = false;
+
+          SessionStore.emitChange();
+          break;
+        }
+
+        case AppConstants.LOGOUT_FAIL: {
+          _isLoggedIn = true;
+
+          SessionStore.emitChange();
+          break;
+        }
+
         default: {
           break
         }

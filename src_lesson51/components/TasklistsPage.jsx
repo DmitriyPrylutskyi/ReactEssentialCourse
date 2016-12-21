@@ -1,8 +1,5 @@
 import React from 'react';
 
-import TaskListsStore from '../stores/TaskListsStore';
-import TaskListsActions from '../actions/TaskListsActions';
-
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -16,6 +13,9 @@ import ExitIcon from 'material-ui/svg-icons/action/exit-to-app';
 import FolderIcon from 'material-ui/svg-icons/file/folder';
 import AddIcon from 'material-ui/svg-icons/content/add';
 
+import TaskListsStore from '../stores/TaskListsStore';
+import TaskListsActions from '../actions/TaskListsActions';
+import SessionActions from '../actions/SessionActions';
 import TaskListCreateModal from './TaskListCreateModal.jsx';
 
 require ('./TasklistsPage.less');
@@ -64,6 +64,11 @@ const TasklistsPage = React.createClass({
         this.setState({ isCreatingTaskList : false });
     },
 
+    handleLogOut () {
+      console.log('logout')
+      SessionActions.logout();
+    },
+
     render() {
         const { router } = this.context;
 
@@ -95,7 +100,7 @@ const TasklistsPage = React.createClass({
                                         key={list.id}
                                         leftIcon={<FolderIcon />}
                                         primaryText={list.name}
-                                        onClick={router.push.bind(null, '/lists/${list.id}')}
+                                        onClick={router.push.bind(null, `/lists/${list.id}`)} // eslint-disable-line
                                     />
                                 )
                             }
