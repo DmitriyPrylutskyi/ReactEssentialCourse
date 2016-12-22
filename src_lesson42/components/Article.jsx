@@ -1,10 +1,10 @@
 /**
  * Created by Dmitriy Prilutsky on 11.12.2016.
  */
-import React from "react";
+import React from 'react';
 import'./Article.scss';
 
-const ARTICLES = require("../articles.json");
+const ARTICLES = require('../articles.json');
 
 class Article extends React.Component {
   constructor(props) {
@@ -29,10 +29,10 @@ class Article extends React.Component {
   render () {
     const {article} = this.state;
     return (
-      <li className="article">
-          <div className="article-title"> {article.title} </div>
-          <div className="article-author">{article.author} </div>
-          <div className="article-body">{article.body} </div>
+      <li className='article'>
+          <div className='article-title'> {article.title} </div>
+          <div className='article-author'>{article.author} </div>
+          <div className='article-body'>{article.body} </div>
       </li>
     )
   }

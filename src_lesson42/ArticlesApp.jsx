@@ -21,6 +21,6 @@ class ArticlesApp extends React.Component {
       </div>
     );
   }
-};
+}
 
 module.exports = ArticlesApp;

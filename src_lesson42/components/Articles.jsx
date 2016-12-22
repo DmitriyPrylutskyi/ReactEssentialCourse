@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import'./Articles.scss';
 
-const ARTICLES = require("../articles.json");
+const ARTICLES = require('../articles.json');
 const ArticlePreview = require('./ArticlePreview.jsx');
 
 class Articles extends React.Component {
@@ -19,8 +19,8 @@ class Articles extends React.Component {
   render() {
     const { articleId: selectedArticleId } = this.props.params;
     return (
-      <div className="articles">
-        <ul className="articles-list">
+      <div className='articles'>
+        <ul className='articles-list'>
           {
              this.state.articles.map((article)=> {
               return <ArticlePreview
