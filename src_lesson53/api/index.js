@@ -23,6 +23,14 @@ export default {
         });
     },
 
+    logout(){
+        const request = gapi.auth.signOut();
+
+        return new Promise((resolve, reject) => {
+            request.execute(resp => resolve(resp));
+        });
+    },
+
     listTaskLists() {
         const request = gapi.client.tasks.tasklists.list();
 
@@ -31,7 +39,17 @@ export default {
         });
     },
 
-    insertTaskList({ title }) {
+    taskList( taskListId ) {
+        const request = gapi.client.tasks.tasklists.get({
+            tasklist: taskListId
+        });
+
+        return new Promise((resolve, reject) => {
+          request.execute(resp => resolve(resp));
+        });
+    },
+
+    insertTaskList( title ) {
         const request = gapi.client.tasks.tasklists.insert({
             title: title
         });
@@ -63,20 +81,19 @@ export default {
     },
 
     updateTask({ taskListId, taskId, ...params }) {
-        console.info(taskListId, taskId);
         const request = gapi.client.tasks.tasks.update({
             tasklist : taskListId,
             task     : taskId,
             id       : taskId,
             ...params
         });
+
         return new Promise((resolve, reject) => {
             request.execute(resp => resolve(resp));
         });
     },
 
     deleteTask({ taskListId, taskId, ...params }) {
-        console.info(taskListId, taskId);
         const request = gapi.client.tasks.tasks.delete({
             tasklist : taskListId,
             task     : taskId,

@@ -6,6 +6,7 @@ import AppConstants from '../constants/AppConstants';
 const CHANGE_EVENT = 'change';
 
 let _tasks = [];
+let _taskList = null;
 let _error = null; // eslint-disable-line
 
 function formatTask(data) {
@@ -19,9 +20,20 @@ function formatTask(data) {
     };
 }
 
+function formatTaskList(data) {
+  return {
+    id   : data.id,
+    name : data.title
+  };
+}
+
 const TasksStore = Object.assign({}, EventEmitter.prototype, {
     getTasks() {
         return _tasks;
+    },
+
+    getTaskList() {
+        return _taskList;
     },
 
     emitChange() {
@@ -38,7 +50,7 @@ const TasksStore = Object.assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(action) {
-    console.log(action.type)
+    console.log(action.type, action)
     switch(action.type) {
         case AppConstants.TASKS_LOAD_SUCCESS: {
             _tasks = action.items.map(formatTask);
@@ -55,10 +67,25 @@ AppDispatcher.register(function(action) {
             break;
         }
 
+        case AppConstants.TASK_LIST_LOAD_SUCCESS: {
+            _taskList = formatTaskList(action.taskList);
+
+            TasksStore.emitChange();
+            break;
+        }
+
+        case AppConstants.TASK_LIST_LOAD_FAIL: {
+            _taskList = '';
+            _error = action.error;
+
+            TasksStore.emitChange();
+            break;
+        }
+
         case AppConstants.TASK_UPDATE_SUCCESS: {
             const updatedTaskIndex = _tasks.findIndex(task => task.id === action.taskId);
             _tasks[updatedTaskIndex] = formatTask(action.task);
-            console.info(updatedTaskIndex);
+
             TasksStore.emitChange();
             break;
         }
@@ -86,10 +113,9 @@ AppDispatcher.register(function(action) {
         }
 
         case AppConstants.TASK_DELETE_SUCCESS: {
-            console.info(_tasks);
             const deleteTaskIndex = _tasks.findIndex(task => task.id === action.taskId);
             _tasks.splice(deleteTaskIndex,1);
-            console.info(deleteTaskIndex);
+
             TasksStore.emitChange();
             break;
         }

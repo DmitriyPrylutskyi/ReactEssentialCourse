@@ -17,7 +17,7 @@ function formatTaskList(data) {
 
 const TaskListsStore = Object.assign({}, EventEmitter.prototype, {
     getTaskLists() {
-        return _taskLists;
+        return _taskLists
     },
 
     emitChange() {
@@ -34,6 +34,7 @@ const TaskListsStore = Object.assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(action) {
+    console.info(action.type, action);
     switch(action.type) {
         case AppConstants.TASK_LISTS_LOAD_SUCCESS: {
             _taskLists = action.items.map(formatTaskList);

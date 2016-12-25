@@ -16,7 +16,8 @@ require ('./TasksPage.less');
 
 function getStateFromFlux() {
     return {
-        tasks: TasksStore.getTasks()
+        tasks: TasksStore.getTasks(),
+        taskList: TasksStore.getTaskList() || {}
     };
 }
 
@@ -30,6 +31,7 @@ const TasksPage = React.createClass({
 
     componentWillMount() {
         TasksActions.loadTasks(this.props.params.id);
+        TasksActions.loadTaskList(this.props.params.id);
     },
 
     componentDidMount() {
@@ -39,6 +41,7 @@ const TasksPage = React.createClass({
     componentWillReceiveProps(nextProps) {
         if (this.props.params.id !== nextProps.params.id) {
             TasksActions.loadTasks(nextProps.params.id);
+            TasksActions.loadTaskList(nextProps.params.id);
         }
     },
 
@@ -55,7 +58,6 @@ const TasksPage = React.createClass({
     },
 
     handleTaskUpdate(taskId, { text }) {
-        console.info(text, taskId);
         TasksActions.updateTask({
             taskListId: this.props.params.id,
             taskId: taskId,
@@ -80,7 +82,6 @@ const TasksPage = React.createClass({
     },
 
     handleTaskDelete(taskId) {
-      console.info(taskId, this.props.params.id);
       TasksActions.deleteTask({
         taskListId: this.props.params.id,
         taskId: taskId
@@ -92,7 +93,7 @@ const TasksPage = React.createClass({
           <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
             <div className='TasksPage'>
                 <div className='TasksPage__header'>
-                    <h2 className='TasksPage__title'>List name</h2>
+                    <h2 className='TasksPage__title'>{this.state.taskList.name}</h2>
                     <div className='TasksPage__tools'>
                         <IconButton onClick={this.handleAddTask}>
                             <ContentAdd />

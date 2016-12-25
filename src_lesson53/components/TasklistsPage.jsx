@@ -22,7 +22,7 @@ require ('./TasklistsPage.less');
 
 function getStateFromFlux() {
     return {
-        taskLists: TaskListsStore.getTaskLists()
+        taskLists: TaskListsStore.getTaskLists(),
     };
 }
 
@@ -65,7 +65,6 @@ const TasklistsPage = React.createClass({
     },
 
     handleLogOut () {
-      console.log('logout')
       SessionActions.logout();
     },
 
@@ -122,7 +121,7 @@ const TasklistsPage = React.createClass({
                     </List>
                 </div>
                 <div className='TasklistsPage__tasks'>
-                    {this.props.children}
+                   {this.props.children}
                 </div>
                 <TaskListCreateModal
                     isOpen={this.state.isCreatingTaskList}
