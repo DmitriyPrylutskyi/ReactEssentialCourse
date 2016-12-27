@@ -1,4 +1,4 @@
-var app_root = 'src_lesson54'; // the app root folder: src, src_users, etc
+var app_root = 'src_lesson55'; // the app root folder: src, src_users, etc
 var path = require('path');
 var webpack = require('webpack')
 

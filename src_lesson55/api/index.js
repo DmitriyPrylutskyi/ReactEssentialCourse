@@ -59,6 +59,28 @@ export default {
         });
     },
 
+    updateTaskList({ id, title }){
+        const request = gapi.client.tasks.tasklists.update({
+            tasklist : id,
+            title    : title,
+            id       : id
+        });
+
+        return new Promise((resolve, reject) => {
+            request.execute(resp => resolve(resp));
+        });
+    },
+
+    deleteTaskList({taskListId}) {
+        const request = gapi.client.tasks.tasklists.delete({
+            tasklist: taskListId
+        });
+
+        return new Promise((resolve, reject) => {
+          request.execute(resp => resolve(resp));
+        });
+    },
+
     listTasks(taskListId) {
         const request = gapi.client.tasks.tasks.list({
             tasklist: taskListId
@@ -69,14 +91,27 @@ export default {
         });
     },
 
-    insertTask({ taskListId, title }) {
-        const request = gapi.client.tasks.tasks.insert({
-            tasklist : taskListId,
-            title    : title
-        });
-
+    insertTask({ taskListId, title, notes, date }) {
+        const request ='';
+        if (date) {
+            console.log('date')
+                this.request = gapi.client.tasks.tasks.insert({
+                    tasklist: taskListId,
+                    title: title,
+                    notes: notes,
+                    due: date
+                });
+        }
+          else {
+              console.log('no date')
+                  this.request = gapi.client.tasks.tasks.insert({
+                      tasklist: taskListId,
+                      title: title,
+                      notes: notes
+                  });
+              }
         return new Promise((resolve, reject) => {
-            request.execute(resp => resolve(resp));
+            this.request.execute(resp => resolve(resp));
         });
     },
 

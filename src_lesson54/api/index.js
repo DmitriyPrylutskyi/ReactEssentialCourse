@@ -49,7 +49,7 @@ export default {
         });
     },
 
-    insertTaskList( title ) {
+    insertTaskList( {title} ) {
         const request = gapi.client.tasks.tasklists.insert({
             title: title
         });
