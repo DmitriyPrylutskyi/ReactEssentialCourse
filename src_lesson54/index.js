@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, Redirect, hashHistory } from 'react-router';
 
 import SessionActions from './actions/SessionActions';
 import SessionStore from './stores/SessionStore';
@@ -19,6 +19,7 @@ window.handleGoogleApiLoaded = () => {
 function renderApp() {
     ReactDOM.render(
       <Router history={hashHistory}>
+        <Redirect from='/' to='/login' />
         <Route path='/' component={App} />
         <Route path='/login' component={LoginPage} />
         <Route component={LoggedInLayout} onEnter={requireAuth}>

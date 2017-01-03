@@ -31,8 +31,8 @@ class Article extends React.Component {
     return (
       <li className='article'>
           <div className='article-title'> {article.title} </div>
-          <div className='article-author'>{article.author} </div>
-          <div className='article-body'>{article.body} </div>
+          <div className='article-author'> {article.author} </div>
+          <div className='article-body'> {article.body} </div>
       </li>
     )
   }

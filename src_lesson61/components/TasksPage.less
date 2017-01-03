@@ -1,0 +1,71 @@
+@import "../styles/palette.less";
+@import "../styles/media.less";
+
+.TasksPage {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.editing {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.TaskList__input {
+    font-size: 16px;
+    margin: 20px 0 10px 15px;
+    padding: 6px;
+    width: 100%;
+    border: 1px solid @divider-color;
+
+    &:focus {
+      outline: 0;
+      border: 1px solid @primary-color;
+    }
+}
+
+.Task__toolbar {
+    display: flex;
+    width: 100%;
+    margin-left: 15px;
+    align-items: center;
+    justify-content: space-between;
+
+    > * {
+        margin-right: 6px;
+    }
+}
+
+.TasksPage__tasks {
+    padding: 16px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.TasksPage__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.TasksPage__title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 20px;
+    margin-left: 32px;
+}
+
+.TaskListPage__tools {
+    margin-left: 20px;
+}
+
+.TasksPage__modal-title {
+    margin: 0;
+}

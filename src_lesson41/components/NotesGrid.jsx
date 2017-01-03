@@ -1,7 +1,7 @@
 /**
  * Created by Dmitriy Prilutsky on 12.12.2016.
  */
-import React from "react";
+import React from 'react';
 
 require('./NotesGrid.scss');
 
@@ -10,7 +10,7 @@ const Note = require('./Note.jsx');
 class NotesGrid extends React.Component {
   componentDidMount () {
     const grid = this.refs.grid;
-    this.msnry = new Masonry( grid, {
+    this.msnry = new Masonry( grid, { //eslint-disable-line
       itemSelector: '.note',
       columnWidth: 200,
       gutter: 10,
@@ -28,7 +28,7 @@ class NotesGrid extends React.Component {
   render () {
     const onNoteDelete = this.props.onNoteDelete;
     return (
-      <div className="notes-grid" ref="grid">
+      <div className='notes-grid' ref='grid'>
         {
           this.props.notes.map ((note)=> {
             return (

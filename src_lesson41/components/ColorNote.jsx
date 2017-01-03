@@ -1,7 +1,7 @@
 /**
  * Created by Dmitriy Prilutsky on 12.12.2016.
  */
-import React from "react";
+import React from 'react';
 
 require('./ColorNote.scss');
 
@@ -53,7 +53,7 @@ class ColorNote extends React.Component {
             <label className={'colors' +  (that.state.selectedOption == radio.id ? ' checked': '')} style={{backgroundColor : radio.color}}
                    key = {radio.id}
             >
-              <input type="radio" className="radio"
+              <input type='radio' className='radio'
                      value={radio.id}
                      checked={that.state.selectedOption == radio.id}
                      onChange={(e)=>that.colorChange(e)} />

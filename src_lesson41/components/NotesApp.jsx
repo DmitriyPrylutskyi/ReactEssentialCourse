@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 require('./NotesApp.scss');
 
@@ -61,9 +61,9 @@ class NotesApp extends React.Component {
 
   render () {
     return (
-      <div className="notes-app">
-        <h2 className="app-header">NotesApp</h2>
-          <input type="text" placeholder="Search..." ref="search" className="search-field" onChange={() => this.handleSearch()} />
+      <div className='notes-app'>
+        <h2 className='app-header'>NotesApp</h2>
+          <input type='text' placeholder='Search...' ref='search' className='search-field' onChange={() => this.handleSearch()} />
         <NoteEditor onNoteAdd={(newNote) => this.handleNoteAdd(newNote)} />
         <NotesGrid notes={this.filterNotes(this.state.notes, this.state.filter)} onNoteDelete={(note) => this.handleNoteDelete(note)} />
       </div>
